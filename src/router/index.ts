@@ -3,7 +3,7 @@
  * @Author       : liulib
  * @Date         : 2020-12-08 14:12:16
  * @LastEditors  : liulib
- * @LastEditTime : 2020-12-08 16:29:11
+ * @LastEditTime : 2020-12-09 09:29:50
  */
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
@@ -11,7 +11,15 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'LayoutWeb',
-        component: () => import('../views/LayoutWeb.vue')
+        redirect: '/home',
+        component: () => import('../views/LayoutWeb.vue'),
+        children: [
+            {
+                path: '/home',
+                name: 'Home',
+                component: () => import('../views/Home.vue')
+            }
+        ]
     },
     {
         path: '/admin',

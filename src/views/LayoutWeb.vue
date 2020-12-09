@@ -3,21 +3,28 @@
  * @Author       : liulib
  * @Date         : 2020-12-08 14:38:06
  * @LastEditors  : liulib
- * @LastEditTime : 2020-12-08 16:27:33
+ * @LastEditTime : 2020-12-09 09:27:19
 -->
 <template>
-    <div>layoutWeb</div>
+    <div class="layoutWebBox">
+        <WebHeader></WebHeader>
+        <router-view></router-view>
+        <WebFooter></WebFooter>
+    </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import WebHeader from '../components/WebHeader.vue'
+import WebFooter from '../components/WebFooter.vue'
 
 export default defineComponent({
+    components: { WebHeader, WebFooter },
     setup() {
         return {}
     }
 })
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 </style>
