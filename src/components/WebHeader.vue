@@ -3,7 +3,7 @@
  * @Author       : liulib
  * @Date         : 2020-12-09 09:12:19
  * @LastEditors  : liulib
- * @LastEditTime : 2020-12-09 15:44:11
+ * @LastEditTime : 2020-12-09 22:45:03
 -->
 <template>
     <a-layout-header class="headerBox">
@@ -29,7 +29,10 @@
                 </div>
                 <div class="navBox">
                     <a-menu v-model:selectedKeys="current" mode="horizontal">
-                        <a-menu-item v-for="item in BASE_CONFIG.NavList" :key="item.title">
+                        <a-menu-item
+                            v-for="item in BASE_CONFIG.NavList"
+                            :key="item.title"
+                        >
                             {{ item.title }}
                         </a-menu-item>
                     </a-menu>
@@ -47,20 +50,20 @@
                         <span>已登录</span>
                     </template>
                 </div>
-                <LoginModal
-                    v-if="dialogVisiable"
-                    :dialogType="dialogType"
-                    :dialogVisiable="dialogVisiable"
-                    @handleCancel="handleCancel"
-                ></LoginModal>
             </a-col>
+            <LoginModal
+                v-if="dialogVisiable"
+                :dialogType="dialogType"
+                :dialogVisiable="dialogVisiable"
+                @handleCancel="handleCancel"
+            ></LoginModal>
         </a-row>
     </a-layout-header>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue'
-import { BASE_CONFIG } from '../configs/base_config'
+import BASE_CONFIG from '../configs/base_config'
 import LoginModal from '../components/LoginModal.vue'
 
 export default defineComponent({

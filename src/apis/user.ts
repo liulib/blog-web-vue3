@@ -5,4 +5,4 @@
  * @LastEditors  : liulib
  * @LastEditTime : 2020-12-09 15:37:32
  */
-import axios from './http'
+import axios from '../utils/http'

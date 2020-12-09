@@ -3,12 +3,12 @@
  * @Author       : liulib
  * @Date         : 2020-12-09 11:11:20
  * @LastEditors  : liulib
- * @LastEditTime : 2020-12-09 15:06:19
+ * @LastEditTime : 2020-12-09 22:43:45
 -->
 <template>
     <a-modal
         class="loginModal"
-        width="20%"
+        width="350px"
         :title="dialogType ? '登录' : '注册'"
         v-model:visible="visiable"
         @cancel="handleCancel"
