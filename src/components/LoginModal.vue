@@ -3,7 +3,7 @@
  * @Author       : liulib
  * @Date         : 2020-12-09 11:11:20
  * @LastEditors  : liulib
- * @LastEditTime : 2020-12-09 22:43:45
+ * @LastEditTime : 2020-12-10 15:44:12
 -->
 <template>
     <a-modal
@@ -81,6 +81,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue'
+import { useStore } from 'vuex'
 
 interface Iform {
     username: string
@@ -102,6 +103,7 @@ export default defineComponent({
         }
     },
     setup(props, context) {
+        const store = useStore()
         // 对话框显示状态
         const visiable = computed(() => {
             return props.dialogVisiable
@@ -158,7 +160,18 @@ export default defineComponent({
         }
         // 点击登录
         const handleLogin = () => {
-            console.log('login')
+            // 处理请求参数 登录不需要confirmPassword email
+            const loginParams = JSON.parse(JSON.stringify(form.value))
+            delete loginParams.confirmPassword
+            delete loginParams.email
+            store
+                .dispatch('loginAndSave', loginParams)
+                .then(data => {
+                    console.log(data)
+                })
+                .catch(e => {
+                    console.log(e)
+                })
         }
         // 点击github登录
         const handleGithubLogin = () => {

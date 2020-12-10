@@ -3,7 +3,7 @@
  * @Author       : liulib
  * @Date         : 2020-10-12 14:58:07
  * @LastEditors  : liulib
- * @LastEditTime : 2020-12-09 23:30:59
+ * @LastEditTime : 2020-12-10 16:10:25
  */
 /**
  * axios封装
@@ -22,7 +22,7 @@ import { message } from 'ant-design-vue'
 
 const { BASE_URL } = config
 
-export const PATH_URL: string = BASE_URL[process.env.VUE_APP_CURENV as string]
+export const PATH_URL: string = BASE_URL[process.env.NODE_ENV as string]
 
 // 创建axios实例
 const instance: AxiosInstance = axios.create({

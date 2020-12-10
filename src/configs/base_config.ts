@@ -3,29 +3,29 @@
  * @Author       : liulib
  * @Date         : 2020-12-09 09:47:54
  * @LastEditors  : liulib
- * @LastEditTime : 2020-12-09 16:35:32
+ * @LastEditTime : 2020-12-10 15:40:35
  */
 
-interface INavOptions {
+interface NavOptions {
     icon: string
     title: string
     link: string
 }
 
-interface IBaseUrl {
+interface BaseUrl {
     [index: string]: string
 }
 
-interface IConfigOptions {
-    BASE_URL: IBaseUrl
+interface ConfigOptions {
+    BASE_URL: BaseUrl
     HEADER_BLOG_NAME: string
-    NavList: INavOptions[]
+    NavList: NavOptions[]
 }
 
-const BASE_CONFIG: IConfigOptions = {
+const BASE_CONFIG: ConfigOptions = {
     BASE_URL: {
         // 开发环境接口前缀
-        dev: 'http://127.0.0.1:3838',
+        development: 'http://127.0.0.1:3838',
         // 生产环境接口前缀
         pro: 'http://mockjs.test.cn',
         // 测试环境接口前缀
