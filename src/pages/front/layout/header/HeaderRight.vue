@@ -1,0 +1,17 @@
+<script setup lang="ts">
+// 组件名和文件名同名会出bug 为啥？？？？？？？
+import NavListVue from './NavList.vue';
+import UserInfo from './UserInfo.vue';
+
+</script>
+
+<template>
+    <ARow justify="end">
+        <ACol>
+            <NavListVue></NavListVue>
+        </ACol>
+        <ACol>
+            <UserInfo></UserInfo>
+        </ACol>
+    </ARow>
+</template>
