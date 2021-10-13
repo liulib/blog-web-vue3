@@ -1,3 +1,5 @@
+import logo from '@/assets/images/logo.png';
+
 // 基础路径
 export const BASE_URL = {
     HTTP_URL: 'http://127.0.0.1:13838/',
@@ -20,3 +22,15 @@ export const EXC_INFO = {
 export const NO_CACHE_DATA: string[] = [];
 
 export const WHITE_LIST: string[] = [];
+
+// 侧边栏配置
+export const SIDEBAR = {
+    // 侧边栏头像
+    avatar: logo,
+    // 标题
+    title: 'LIULIB',
+    // 子标题
+    subTitle: `it's time to seize the fucking day`,
+    // 个人主页
+    homepages: {}
+};
