@@ -26,7 +26,7 @@ const username = computed(() => store.state.user.username);
                     <span @click="e => console.log(e)">导入文章</span>
                 </AMenuItem>
                 <AMenuItem key="system">
-                    <span @click="() => router.push('/admin/welcome')">后台管理</span>
+                    <span @click="() => router.push('/admin/dashboard')">后台管理</span>
                 </AMenuItem>
                 <AMenuItem key="logout">
                     <span class="user-logout" @click="e => console.log(e)">退出登录</span>
