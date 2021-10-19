@@ -31,17 +31,11 @@ export function createRouterGuards(router: Router) {
             }
             next();
         } else {
-            // 未登录
-            if (WHITE_LIST.includes(to.name as string)) {
-                // 在免登录名单，直接进入
+            if (to.path === '/') {
                 next();
             } else {
                 // 跳转到登录页并带上跳转前的路径
-                next({
-                    path: homeRoutePath,
-                    query: { redirect: to.path },
-                    replace: true
-                });
+                next(homeRoutePath);
             }
         }
     });

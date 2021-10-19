@@ -6,6 +6,7 @@ import notFound from './modules/notFound';
 import dashboard from './modules/dashboard';
 import system from './modules/system';
 import front from './modules/front';
+import blog from './modules/blog';
 
 import { createRouterGuards } from './router-guard';
 
@@ -29,7 +30,7 @@ const routes: Array<RouteRecordRaw> = [
             import(
                 /* webpackChunkName: "BackLayout" */ '@/pages/back/layout/index.vue'
             ),
-        children: [...dashboard, ...system]
+        children: [...dashboard, ...system, ...blog]
     },
     ...notFound
     // ...login
