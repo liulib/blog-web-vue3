@@ -5,3 +5,5 @@ export const SELECTED_KEYS = 'SELECTED_KEYS';
 export const TAB_LIST = 'TAB_LIST';
 export const USER_NAME = 'USER_NAME';
 export const LOGIN_MODAL = 'LOGIN_MODAL';
+export const BLOG_CATEGORY = 'BLOG_CATEGORY';
+export const BLOG_TAG = 'BLOG_TAG';

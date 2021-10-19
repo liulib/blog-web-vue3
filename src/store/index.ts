@@ -4,19 +4,23 @@ import { App } from 'vue';
 
 import { UserState } from './modules/user/state';
 import { MenuState } from './modules/menu/state';
+import { BlogState } from './modules/blog/state';
 import { store as user, UserStore } from './modules/user';
 import { store as menu, MenuStore } from './modules/menu';
+import { store as blog, BlogStore } from './modules/blog';
 
 export interface RootState {
     user: UserState;
     menu: MenuState;
+    blog: BlogState;
 }
 
 export type Store = UserStore<Pick<RootState, 'user'>> &
-    MenuStore<Pick<RootState, 'menu'>>;
+    MenuStore<Pick<RootState, 'menu'>> &
+    BlogStore<Pick<RootState, 'blog'>>;
 
 const store = createStore({
-    modules: { user, menu }
+    modules: { user, menu, blog }
     // plugins: [createPersistedState]
 });
 
