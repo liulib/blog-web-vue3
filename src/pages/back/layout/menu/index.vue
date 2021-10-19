@@ -73,6 +73,8 @@ export default defineComponent({
          * @keyPath 地址
          */
         const handleRouteJump = ({ key }) => {
+            console.log(key);
+
             router.push(key);
         };
 
