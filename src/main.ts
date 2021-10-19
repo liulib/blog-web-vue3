@@ -1,7 +1,13 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import { setupAntd } from '@/configs/ui-config';
+
 import { setupRouter } from '@/router/index';
+
+import { setupAntd, setupMarkDown } from '@/plugins';
+
+import '@/assets/styles/reset.css';
+
+import '@/assets/icons/iconfont.css';
 
 const app = createApp(App);
 
@@ -9,6 +15,8 @@ const app = createApp(App);
 setupAntd(app);
 
 setupRouter(app);
+
+setupMarkDown(app);
 
 // 路由准备就绪后挂载APP实例
 app.mount('#app');
