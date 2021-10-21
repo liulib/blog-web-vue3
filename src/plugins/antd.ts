@@ -13,6 +13,7 @@ import {
     Layout,
     Tabs,
     Dropdown,
+    Divider,
     Breadcrumb,
     Tag,
     Select,
@@ -22,7 +23,8 @@ import {
     Col,
     message,
     notification,
-    Switch
+    Switch,
+    Pagination
 } from 'ant-design-vue';
 
 import 'ant-design-vue/dist/antd.css';
@@ -47,7 +49,9 @@ export const setupAntd = (app: App<Element>) => {
         .use(TreeSelect)
         .use(Row)
         .use(Col)
-        .use(Switch);
+        .use(Switch)
+        .use(Divider)
+        .use(Pagination);
 };
 
 // 导出实例 便于在拦截器中使用实现解耦

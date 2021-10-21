@@ -8,9 +8,6 @@ import '@kangc/v-md-editor/lib/theme/style/vuepress.css';
 import VMdPreview from '@kangc/v-md-editor/lib/preview';
 import '@kangc/v-md-editor/lib/style/preview.css';
 
-// highlightjs
-import hljs from 'highlight.js';
-
 // Prism
 import Prism from 'prismjs';
 // highlight code
@@ -21,7 +18,7 @@ VMdEditor.use(vuepressTheme, {
 });
 
 VMdPreview.use(vuepressTheme, {
-    Hljs: hljs
+    Prism
 });
 
 export const setupMarkDown = (app: App<Element>) => {
