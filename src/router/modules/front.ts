@@ -52,18 +52,6 @@ const routes: Array<RouteRecordRaw> = [
             import(
                 /* webpackChunkName: "front-category" */ '@/pages/front/category/Category.vue'
             )
-    },
-    {
-        path: 'resume',
-        name: `${routeName}-resume`,
-        meta: {
-            title: '简历',
-            isTabsPage: false
-        },
-        component: () =>
-            import(
-                /* webpackChunkName: "front-resume" */ '@/pages/front/resume/Resume.vue'
-            )
     }
 ];
 

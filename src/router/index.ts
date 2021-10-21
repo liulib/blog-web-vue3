@@ -23,6 +23,12 @@ const routes: Array<RouteRecordRaw> = [
         children: [...front]
     },
     {
+        path: '/resume',
+        name: 'Resume',
+        component: () =>
+            import(/* webpackChunkName: "Resume" */ '@/pages/resume/Resume.vue')
+    },
+    {
         path: '/admin',
         name: 'BackLayout',
         redirect: '/admin/dashboard',
