@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, onMounted, reactive, ref, toRefs } from 'vue'
+import { nextTick, reactive, ref, toRefs } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { findArticleDetailById } from '@/apis/article'
@@ -36,9 +36,6 @@ getArticleDetail().then(() => {
     nextTick(() => {
         const dom = preview.value?.$el
         state.titles = generateTitles(dom)
-
-        console.log(state.titles);
-
     })
 })
 

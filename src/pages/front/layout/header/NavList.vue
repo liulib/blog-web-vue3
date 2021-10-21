@@ -5,10 +5,7 @@ import { useRoute, useRouter } from 'vue-router';
 const route = useRoute();
 const router = useRouter();
 
-console.log(navList);
-
 const jumoTo = (url: string) => {
-    console.log(url);
     router.push(url)
 }
 
