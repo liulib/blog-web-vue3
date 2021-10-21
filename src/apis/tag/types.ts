@@ -1,7 +1,8 @@
 export interface ITag {
     id: number;
     tagName: string;
-    tagDes: string;
+    tagDes?: string;
+    tagColor: string;
     isDelete: number;
     createdAt: string;
     updatedAt: string;
