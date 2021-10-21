@@ -5,6 +5,13 @@ import { useRoute, useRouter } from 'vue-router';
 const route = useRoute();
 const router = useRouter();
 
+console.log(navList);
+
+const jumoTo = (url: string) => {
+    console.log(url);
+    router.push(url)
+}
+
 </script>
 
 <template>
@@ -12,7 +19,7 @@ const router = useRouter();
         <AMenuItem
             v-for="item in navList"
             :key="item.link"
-            @click="router.push(item.link)"
+            @click="jumoTo(item.link)"
         >{{ item.title }}</AMenuItem>
     </AMenu>
 </template>

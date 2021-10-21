@@ -13,17 +13,17 @@ const navList: nav[] = [
     {
         icon: 'edit',
         title: '归档',
-        link: '/archives'
+        link: '/archive'
     },
     {
         icon: 'folder',
         title: '分类',
-        link: '/categories'
+        link: '/category'
     },
     {
         icon: 'user',
-        title: '关于',
-        link: '/about'
+        title: '简历',
+        link: '/resume'
     }
 ];
 

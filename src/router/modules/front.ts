@@ -30,15 +30,15 @@ const routes: Array<RouteRecordRaw> = [
             )
     },
     {
-        path: 'archives',
-        name: `${routeName}-archives`,
+        path: 'archive',
+        name: `${routeName}-archive`,
         meta: {
             title: '归档',
             isTabsPage: false
         },
         component: () =>
             import(
-                /* webpackChunkName: "front-archives" */ '@/pages/front/archives/Archives.vue'
+                /* webpackChunkName: "front-archive" */ '@/pages/front/archive/Archive.vue'
             )
     },
     {
