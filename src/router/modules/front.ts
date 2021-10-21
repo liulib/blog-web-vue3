@@ -28,6 +28,42 @@ const routes: Array<RouteRecordRaw> = [
             import(
                 /* webpackChunkName: "front-article" */ '@/pages/front/article/Article.vue'
             )
+    },
+    {
+        path: 'archives',
+        name: `${routeName}-archives`,
+        meta: {
+            title: '归档',
+            isTabsPage: false
+        },
+        component: () =>
+            import(
+                /* webpackChunkName: "front-archives" */ '@/pages/front/archives/Archives.vue'
+            )
+    },
+    {
+        path: 'category',
+        name: `${routeName}-category`,
+        meta: {
+            title: '分类',
+            isTabsPage: false
+        },
+        component: () =>
+            import(
+                /* webpackChunkName: "front-category" */ '@/pages/front/category/Category.vue'
+            )
+    },
+    {
+        path: 'resume',
+        name: `${routeName}-resume`,
+        meta: {
+            title: '简历',
+            isTabsPage: false
+        },
+        component: () =>
+            import(
+                /* webpackChunkName: "front-resume" */ '@/pages/front/resume/Resume.vue'
+            )
     }
 ];
 
