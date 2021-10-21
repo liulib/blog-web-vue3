@@ -1,3 +1,6 @@
+import { ICategory } from '@/apis/category/types';
+import { ITag } from '@/apis/tag/types';
+
 export interface ICreateArticleReq {
     id?: number;
     title: string;
@@ -28,11 +31,14 @@ export interface IArticle {
     id: number;
     title: string;
     brief: string;
-    briefUrl: string;
+    briefUrl?: string;
     content: string;
     isDelete: number;
     thumbsUpCount: number;
     viewCount: number;
+    commentCount: number;
     updatedAt: string;
     createdAt: string;
+    category: ICategory;
+    tags: ITag[];
 }

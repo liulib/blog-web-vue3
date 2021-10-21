@@ -16,6 +16,18 @@ const routes: Array<RouteRecordRaw> = [
             import(
                 /* webpackChunkName: "front-home" */ '@/pages/front/home/Home.vue'
             )
+    },
+    {
+        path: 'article/:id',
+        name: `${routeName}-article`,
+        meta: {
+            title: '文章详情',
+            isTabsPage: false
+        },
+        component: () =>
+            import(
+                /* webpackChunkName: "front-article" */ '@/pages/front/article/Article.vue'
+            )
     }
 ];
 
