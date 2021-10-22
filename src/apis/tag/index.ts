@@ -35,7 +35,7 @@ export function getAllTag() {
 export function updateTagById(params: any) {
     return http.request({
         url: Api.updateById,
-        method: 'GET',
+        method: 'POST',
         params
     });
 }

@@ -2,19 +2,19 @@
 import { reactive, toRefs } from 'vue'
 import { Form, message as Message } from 'ant-design-vue'
 
-import { ICategory } from '@/apis/category/types'
-import { createCategory, updateCategoryById } from '@/apis/category'
+import { ITag } from '@/apis/Tag/types'
+import { createTag, updateTagById } from '@/apis/Tag'
 
 const useForm = Form.useForm
 
 interface IState {
     isModalVisible: boolean,
-    formState: ICategory,
+    formState: ITag,
     formRules: any
 }
 
 interface IProps {
-    addOrEditFields: ICategory
+    addOrEditFields: ITag
 }
 
 const emit = defineEmits(['closeAddOrEditModal'])
@@ -24,16 +24,25 @@ const state: IState = reactive({
     isModalVisible: true,
     formState: {
         id: 0,
-        categoryName: '',
-        categoryDes: '',
+        tagName: '',
+        tagDes: '',
+        tagColor: '',
         isDelete: 0,
     },
     formRules: {
-        categoryName: [
+        tagName: [
             {
                 type: 'string',
                 required: true,
-                message: '请填写分类标题',
+                message: '请填写标签名称',
+                trigger: 'blur'
+            }
+        ],
+        tagColor: [
+            {
+                type: 'string',
+                required: true,
+                message: '请填写标签颜色',
                 trigger: 'blur'
             }
         ],
@@ -48,14 +57,14 @@ const state: IState = reactive({
     }
 })
 
-const CategoryForm = useForm(state.formState, state.formRules);
+const TagForm = useForm(state.formState, state.formRules);
 
 const handleCancel = () => {
     emit('closeAddOrEditModal', false)
 }
 
 const handleConfirm = () => {
-    CategoryForm
+    TagForm
         .validate()
         .then(async () => {
             try {
@@ -63,7 +72,7 @@ const handleConfirm = () => {
                 // 因为后端文章id从1开始，所以不为0则说明是编辑
                 // id为0则是新增 不为0则是编辑
                 if (state.formState.id === 0) {
-                    await createCategory(state.formState);
+                    await createTag(state.formState);
                     Message.success('创建成功');
 
                 }
@@ -71,7 +80,7 @@ const handleConfirm = () => {
                 if (state.formState.id !== 0) {
                     console.log(state.formState);
 
-                    await updateCategoryById(state.formState);
+                    await updateTagById(state.formState);
                     Message.success('更新成功');
                 }
 
@@ -92,7 +101,7 @@ const { isModalVisible, formState, formRules } = { ...toRefs(state) }
 
 <template>
     <AModal
-        :title="state.formState.id === 0 ? '新增分类' : '编辑分类'"
+        :title="state.formState.id === 0 ? '新增标签' : '编辑标签'"
         :visible="isModalVisible"
         @cancel="handleCancel"
         :width="600"
@@ -100,23 +109,32 @@ const { isModalVisible, formState, formRules } = { ...toRefs(state) }
         <div class="modalContentBox">
             <AForm :model="formState" :labelCol="{ span: 4 }" :wrapperCol="{ offset: 4 }">
                 <AFormItem
-                    label="分类名称"
-                    v-bind="CategoryForm.validateInfos.categoryName"
+                    label="标签名称"
+                    v-bind="TagForm.validateInfos.tagName"
                     required
                     has-feedback
                 >
-                    <AInput v-model:value="formState.categoryName" props="categoryName" />
+                    <AInput v-model:value="formState.tagName" props="tagName" />
                 </AFormItem>
 
-                <AFormItem label="分类描述">
-                    <AInput v-model:value="formState.categoryDes" props="categoryDes" />
+                <AFormItem label="标签描述">
+                    <AInput v-model:value="formState.tagDes" props="tagDes" />
+                </AFormItem>
+
+                <AFormItem
+                    label="标签颜色"
+                    v-bind="TagForm.validateInfos.tagColor"
+                    required
+                    has-feedback
+                >
+                    <AInput v-model:value="formState.tagColor" props="tagColor" />
                 </AFormItem>
 
                 <AFormItem
                     label="是否删除"
                     required
                     has-feedback
-                    v-bind="CategoryForm.validateInfos.isDelete"
+                    v-bind="TagForm.validateInfos.isDelete"
                 >
                     <ARadioGroup name="isDeleteRadioGroup" v-model:value="formState.isDelete">
                         <ARadio :value="1">是</ARadio>

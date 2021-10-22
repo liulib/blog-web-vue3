@@ -37,6 +37,18 @@ const routes: Array<RouteRecordRaw> = [
                     import(
                         /* webpackChunkName: "system-category" */ '@/pages/back/category/Category.vue'
                     )
+            },
+            {
+                path: 'tag',
+                name: `${routeName}-tag`,
+                meta: {
+                    title: '标签管理',
+                    isTabsPage: true
+                },
+                component: () =>
+                    import(
+                        /* webpackChunkName: "system-tag" */ '@/pages/back/tag/Tag.vue'
+                    )
             }
         ]
     }

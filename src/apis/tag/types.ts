@@ -4,8 +4,8 @@ export interface ITag {
     tagDes?: string;
     tagColor: string;
     isDelete: number;
-    createdAt: string;
-    updatedAt: string;
+    createdAt?: string;
+    updatedAt?: string;
 }
 
 export interface ICreateTagReq {
