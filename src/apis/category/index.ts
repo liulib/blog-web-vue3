@@ -11,7 +11,7 @@ enum Api {
 /**
  * @description: 创建分类
  */
-export function createArticle(params: ICreateCategoryReq) {
+export function createCategory(params: ICreateCategoryReq) {
     return http.request({
         url: Api.createCategory,
         method: 'POST',
@@ -35,7 +35,7 @@ export function getAllCategory() {
 export function updateCategoryById(params: any) {
     return http.request({
         url: Api.updateById,
-        method: 'GET',
+        method: 'POST',
         params
     });
 }

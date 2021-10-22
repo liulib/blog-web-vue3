@@ -17,7 +17,7 @@ export interface IQueryArticleListReq {
     pageSize: number;
     categoryId?: number | undefined;
     tagId?: number | undefined;
-    isDelete?: number;
+    isDelete?: number | string;
 }
 
 export interface IQueryArticleListRes {

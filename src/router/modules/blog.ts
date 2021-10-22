@@ -25,6 +25,18 @@ const routes: Array<RouteRecordRaw> = [
                     import(
                         /* webpackChunkName: "system-user" */ '@/pages/back/article/Article.vue'
                     )
+            },
+            {
+                path: 'category',
+                name: `${routeName}-category`,
+                meta: {
+                    title: '分类管理',
+                    isTabsPage: true
+                },
+                component: () =>
+                    import(
+                        /* webpackChunkName: "system-category" */ '@/pages/back/category/Category.vue'
+                    )
             }
         ]
     }
