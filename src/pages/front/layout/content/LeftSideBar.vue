@@ -20,7 +20,7 @@ import { SIDEBAR } from '@/configs/base-config';
 .leftSideBarBox {
     text-align: center;
     border-right: 1px solid #ccc;
-    height: calc(100vh - 64px - 64px - 40px);
+    height: calc(100vh - 64px - 36px - 40px);
 
     .logo {
         width: 132px;

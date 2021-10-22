@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useStore } from '@/store';
+
+
+</script>
+
+
 <template>
     <div class="left">
         <span>liulib</span>

@@ -44,8 +44,8 @@ onUnmounted(() => {
 
 <template>
     <ALayoutFooter class="footer">
-        <p class="mT10">MIT Licensed | Copyright © 2021-present liulib</p>
-        <p class="mT10">{{ tips }}</p>
+        <p>MIT Licensed | Copyright © 2021-present liulib</p>
+        <p class="mT3">{{ tips }}</p>
     </ALayoutFooter>
 </template>
 
@@ -53,13 +53,13 @@ onUnmounted(() => {
 .footer {
     background-color: #fff;
     text-align: center;
-    height: 64px;
-    font-size: 14px;
-    padding-top: 5px;
+    height: 36px;
+    font-size: 12px;
+    padding: 5px;
     border-top: 1px solid #ccc;
 }
 
-.mT10 {
-    margin-top: 10px;
+.mT3 {
+    margin-top: 3px;
 }
 </style>

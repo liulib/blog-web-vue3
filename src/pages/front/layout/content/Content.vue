@@ -15,11 +15,11 @@ import LeftSideBarVue from './LeftSideBar.vue';
 
 <style lang="less" scoped>
 .contentBox {
-    height: calc(100vh - 64px - 64px - 40px);
+    height: calc(100vh - 64px - 36px - 40px);
     background-color: #fff;
     margin-top: 40px;
     .mainAndRightBox {
-        height: calc(100vh - 64px - 64px - 40px);
+        height: calc(100vh - 64px - 36px - 40px);
         overflow-y: scroll;
     }
 }
