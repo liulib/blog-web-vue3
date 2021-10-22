@@ -3,11 +3,8 @@ import { reactive, toRefs, computed } from 'vue'
 import { Form, message as Message } from 'ant-design-vue'
 import { useStore } from "@/store"
 
-
 import { IAddOrEditFieldsProps } from './types'
 import { createArticle, updateArticleById } from '@/apis/article'
-
-
 
 interface IForm {
     id: number,
@@ -82,6 +79,14 @@ const state: IState = reactive({
                 type: 'number',
                 required: true,
                 message: '请选择分类',
+                trigger: 'blur'
+            }
+        ],
+        isDelete: [
+            {
+                type: 'number',
+                required: true,
+                message: '请选择是否删除',
                 trigger: 'blur'
             }
         ]
@@ -169,8 +174,16 @@ const handleConfirm = () => {
                     <v-md-editor v-model="formState.brief"></v-md-editor>
                 </AFormItem>
 
-                <AFormItem label="是否删除">
-                    <ASwitch v-model:checked="formState.isDelete" props="isDelete" />
+                <AFormItem
+                    label="是否删除"
+                    required
+                    has-feedback
+                    v-bind="ArticleForm.validateInfos.isDelete"
+                >
+                    <ARadioGroup name="isDeleteRadioGroup" v-model:value="formState.isDelete">
+                        <ARadio :value="1">是</ARadio>
+                        <ARadio :value="0">否</ARadio>
+                    </ARadioGroup>
                 </AFormItem>
 
                 <AFormItem

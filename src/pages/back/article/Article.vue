@@ -52,7 +52,7 @@ const state: IState = reactive({
         pageSize: 10,
         categoryId: undefined,
         tagId: undefined,
-        isDelete: 0
+        isDelete: ''
     }
 })
 
