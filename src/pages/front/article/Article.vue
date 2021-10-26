@@ -68,6 +68,7 @@ const { article, titles } = { ...toRefs(state) }
         position: fixed;
         right: 40px;
         top: 104px;
+        bottom: 36px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;

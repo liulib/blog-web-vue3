@@ -36,6 +36,7 @@ const username = computed(() => store.state.user.username);
     </ADropdown>
     <div v-else>
         <AButton
+            style="margin-right: 10px;"
             @click="store.commit(MutationType.SET_LOGIN_MODAL, { visible: true, type: 'login' })"
         >登录</AButton>
         <AButton
