@@ -36,6 +36,7 @@ getArticleDetail().then(() => {
     nextTick(() => {
         const dom = preview.value?.$el
         state.titles = generateTitles(dom)
+        console.log(state.titles.length);
     })
 })
 
@@ -45,10 +46,10 @@ const { article, titles } = { ...toRefs(state) }
 <template>
     <div class="articleContainer">
         <div class="mdContainer" :style="titles.length > 0 ? 'padding-right: 280px;' : ''">
-            <v-md-preview :text="article?.content" ref="preview" id="testDom"></v-md-preview>
+            <v-md-preview :text="article?.content" ref="preview"></v-md-preview>
         </div>
 
-        <div class="navContainer">
+        <div class="navContainer" v-if="titles.length > 0">
             <div
                 class="nav"
                 v-for="anchor in titles"
@@ -61,6 +62,14 @@ const { article, titles } = { ...toRefs(state) }
 </template>
 
 <style lang="less" scoped>
+@media only screen and(max-width: 1300px) {
+    .mdContainer {
+        padding-right: 20px !important;
+    }
+    .navContainer {
+        display: none;
+    }
+}
 .articleContainer {
     .navContainer {
         padding: 0 20px;
