@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, toRefs } from 'vue'
-
+import SkeletonBox from '@/components/SkeletonBox/SkeletonBox.vue'
 import { decodeBase64 } from '@/utils/decodeBase64'
 
 interface IContactInfo {
@@ -13,6 +13,7 @@ interface IContactInfo {
 interface IState {
     contactInfo: IContactInfo,
     handleFlag: boolean,
+    loading: boolean
 }
 
 const state: IState = reactive({
@@ -23,6 +24,7 @@ const state: IState = reactive({
         qq: 'MzQ2MDAxODk='
     },
     handleFlag: true,
+    loading: true
 })
 
 const handle64 = () => {
@@ -37,12 +39,14 @@ const handle64 = () => {
     state.handleFlag = false;
 }
 
-const { contactInfo, handleFlag } = { ...toRefs(state) }
+state.loading = false
+
+const { contactInfo, loading } = { ...toRefs(state) }
 </script>
 
-
 <template>
-    <div class="app">
+    <SkeletonBox v-if="loading"></SkeletonBox>
+    <div class="app" v-else>
         <!-- 简历 -->
         <main class="container">
             <!-- 左侧边栏 -->
@@ -312,7 +316,6 @@ a {
         font-weight: bold;
     }
 }
-
 .app {
     padding: 10px 0;
     .container {
