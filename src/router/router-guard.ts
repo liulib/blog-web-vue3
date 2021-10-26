@@ -18,20 +18,21 @@ export function createRouterGuards(router: Router) {
         NProgress.start();
         // 获取localStorage中的数据
         const token = storage.get(TOKEN) ? storage.get(TOKEN) : null;
-        // 存在token 则直接跳转页面
-        if (token) {
-            // 判断是否需要添加到tabs标签
-            if (to.meta.isTabsPage) {
-                const tabsItem: tab = {
-                    name: to.name as string,
-                    title: to.meta.title as string,
-                    path: to.path
-                };
-                store.commit(MutationType.ADD_TAB_LIST, tabsItem);
-            }
+        // 白名单的则直接跳转
+        if (WHITE_LIST.includes(to.path.split('/')[0])) {
             next();
         } else {
-            if (to.path === '/') {
+            // 不在白名单则需要token 没有token则重定向到首页
+            if (token) {
+                // 判断是否需要添加到tabs标签
+                if (to.meta.isTabsPage) {
+                    const tabsItem: tab = {
+                        name: to.name as string,
+                        title: to.meta.title as string,
+                        path: to.path
+                    };
+                    store.commit(MutationType.ADD_TAB_LIST, tabsItem);
+                }
                 next();
             } else {
                 // 跳转到登录页并带上跳转前的路径
