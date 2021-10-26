@@ -7,7 +7,7 @@
         @click="handleRouteJump"
         @openChange="handleOpenChange"
     >
-        <template v-for="item in tabsList">
+        <template v-for="item in menuList">
             <!-- 没有子级菜单直接渲染 -->
             <template v-if="!item.children">
                 <AMenuItem :key="item.url">
@@ -45,7 +45,7 @@ export default defineComponent({
         const selectedKeys = computed(() => {
             return store.state.menu.selectedKeys;
         });
-        const tabsList = computed(() => {
+        const menuList = computed(() => {
             return store.state.user.menuList;
         });
 
@@ -57,8 +57,8 @@ export default defineComponent({
             () => {
                 // TODO  openKeys有bug
                 const splitPath = route.path.split('/')
-                const tmpOpenKeys: string[] = [`/${splitPath[1]}/${splitPath[2]}`];
-                const tmpSelectKeys: string[] = [route.path];
+                const tmpOpenKeys = [`/${splitPath[1]}/${splitPath[2]}`];
+                const tmpSelectKeys = [route.path];
                 store.commit(MutationType.SET_OPEN_KEYS, tmpOpenKeys);
                 store.commit(MutationType.SET_SELECTED_KEYS, tmpSelectKeys);
             },
@@ -90,7 +90,7 @@ export default defineComponent({
         return {
             openKeys,
             selectedKeys,
-            tabsList,
+            menuList,
             handleRouteJump,
             handleOpenChange
         };

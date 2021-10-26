@@ -48,15 +48,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs, onMounted } from 'vue';
+import { defineComponent, reactive, toRefs } from 'vue';
+import { message } from 'ant-design-vue';
+
 import { Menu } from '@/store/modules/user/state';
 import { getMenuAll } from '@/apis/menu/index';
 import columns from './menuColumns';
+import MenuModal from './MenuModal.vue';
+import { sortTree } from '@/utils/sortTree';
 import { toTree } from '@/utils/toTree';
-import { message } from 'ant-design-vue';
 import { TimeFormat } from '@/utils/TimeFormat';
 import { parseParent } from '@/utils/parseParent';
-import MenuModal from './MenuModal.vue';
+import { useStore } from '@/store'
+import { MutationType } from '@/store/modules/user/mutation-types';
+
 
 interface dataProps {
     menuTreeData: Menu[] | null;
@@ -73,6 +78,7 @@ export interface addMenuParamsProps {
     status: number;
     url: string;
     perms: string;
+    order: number;
     remark: string;
     isDelete: number;
 }
@@ -92,16 +98,25 @@ export default defineComponent({
                 status: 0,
                 url: '',
                 perms: '',
+                order: 0,
                 remark: '',
                 isDelete: 0
             },
             addMenuModalVisible: false
         });
 
+        const store = useStore();
+
+
         const getMenuAllReq = async () => {
             try {
                 const res = await getMenuAll();
+
                 data.menuTreeData = toTree<Menu>(res);
+                sortTree<Menu>(data.menuTreeData);
+
+                store.commit(MutationType.SET_MENU_LIST, data.menuTreeData);
+
                 // 将父级名称保存为新对象，便于渲染
                 data.tmpParentName = parseParent(res, 'menuName');
             } catch (error) {
@@ -113,7 +128,7 @@ export default defineComponent({
          * @description: 处理数据传递给对话框并显示对话框
          * @param {*} type 0新增 1编辑
          */
-        const showAddMenuModal = (type: number, editData) => {
+        const showAddMenuModal = (type: number, editData?: addMenuParamsProps) => {
             //处理数据
             if (type) {
                 for (let item in editData) {
@@ -129,6 +144,7 @@ export default defineComponent({
                     status: 0,
                     url: '',
                     perms: '',
+                    order: 0,
                     remark: '',
                     isDelete: 0
                 };
@@ -148,9 +164,7 @@ export default defineComponent({
             getMenuAllReq();
         };
 
-        // onMounted(() => {
-        //     getMenuAllReq();
-        // });
+        getMenuAllReq();
 
         return {
             ...toRefs(data),

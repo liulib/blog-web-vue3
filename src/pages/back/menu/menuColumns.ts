@@ -32,6 +32,11 @@ export default [
         key: 'url'
     },
     {
+        title: '排序',
+        dataIndex: 'order',
+        key: 'order'
+    },
+    {
         title: '备注',
         key: 'remark',
         dataIndex: 'remark'

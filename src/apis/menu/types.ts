@@ -6,6 +6,7 @@ export interface menu {
     menuType: number;
     parentId: number;
     perms?: string;
+    order?: number;
     remark?: string;
     status: number;
     updatedAt: string;
@@ -19,6 +20,7 @@ export interface createMenuReq {
     status?: number;
     url?: string;
     perms?: string;
+    order?: number;
     remark?: string;
     isDelete?: number;
 }
@@ -31,6 +33,7 @@ export interface updateById {
     status?: number;
     url?: string;
     perms?: string;
+    order?: number;
     remark?: string;
     isDelete?: number;
 }

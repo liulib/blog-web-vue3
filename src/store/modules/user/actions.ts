@@ -12,6 +12,7 @@ import { UserActionTypes } from './action-types';
 import { RootState } from '@/store';
 
 import { toTree } from '@/utils/toTree';
+import { sortTree } from '@/utils/sortTree';
 import { Menu } from './state';
 
 type AugmentedActionContext = {
@@ -33,7 +34,9 @@ const actions: ActionTree<UserState, RootState> & Actions = {
     async [UserActionTypes.Login]({ commit }, userInfo) {
         try {
             const response = await login(userInfo);
+
             const treeData = toTree<Menu>(response.menuList);
+            sortTree<Menu>(treeData);
 
             commit(MutationType.SET_TOKEN, response.token);
             commit(MutationType.SET_MENU_LIST, treeData);

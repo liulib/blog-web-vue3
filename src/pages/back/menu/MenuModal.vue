@@ -56,6 +56,9 @@
                 <a-form-item label="url" v-bind="addForm.validateInfos.url">
                     <a-input v-model:value="addMenuParams.url" props="url" />
                 </a-form-item>
+                <a-form-item label="排序">
+                    <a-input-number v-model:value="addMenuParams.order" />
+                </a-form-item>
                 <a-form-item label="权限标志" v-bind="addForm.validateInfos.perms">
                     <a-input v-model:value="addMenuParams.perms" props="perms" />
                 </a-form-item>
@@ -118,6 +121,7 @@ export default defineComponent({
                 status: 0,
                 url: '',
                 perms: '',
+                order: 0,
                 remark: '',
                 isDelete: 0
             },
@@ -236,6 +240,3 @@ export default defineComponent({
     }
 });
 </script>
-
-<style lang="" scoped>
-</style>

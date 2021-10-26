@@ -28,7 +28,7 @@ export interface UserState {
     menuList: Menu[];
     loginModal: LoginModal;
 }
-
+// TODO menuList放在了这里
 const state: UserState = {
     token: storage.get(TOKEN) || '',
     menuList: storage.get(MENU_LIST) || [],

@@ -24,7 +24,8 @@ import {
     message,
     notification,
     Switch,
-    Pagination
+    Pagination,
+    InputNumber
 } from 'ant-design-vue';
 
 import 'ant-design-vue/dist/antd.css';
@@ -51,7 +52,8 @@ export const setupAntd = (app: App<Element>) => {
         .use(Col)
         .use(Switch)
         .use(Divider)
-        .use(Pagination);
+        .use(Pagination)
+        .use(InputNumber);
 };
 
 // 导出实例 便于在拦截器中使用实现解耦
