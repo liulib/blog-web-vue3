@@ -3,12 +3,20 @@ import { computed } from 'vue'
 import { useStore } from '@/store';
 import { useRouter } from 'vue-router';
 
-import { MutationType } from '@/store/modules/user/mutation-types'
+import { MutationType as UserMutationType } from '@/store/modules/user/mutation-types'
+import { storage } from '@/utils/Storage';
 
 const router = useRouter()
 const store = useStore()
 
 const username = computed(() => store.state.user.username);
+
+const logout = () => {
+    storage.clear()
+    router.push('/')
+    // vuex不会写 先用页面重载的方式
+    window.location.reload()
+}
 
 </script>
 
@@ -29,7 +37,7 @@ const username = computed(() => store.state.user.username);
                     <span @click="() => router.push('/admin/dashboard')">后台管理</span>
                 </AMenuItem>
                 <AMenuItem key="logout">
-                    <span class="user-logout" @click="e => console.log(e)">退出登录</span>
+                    <span class="user-logout" @click="logout">退出登录</span>
                 </AMenuItem>
             </AMenu>
         </template>
@@ -37,10 +45,10 @@ const username = computed(() => store.state.user.username);
     <div v-else>
         <AButton
             style="margin-right: 10px;"
-            @click="store.commit(MutationType.SET_LOGIN_MODAL, { visible: true, type: 'login' })"
+            @click="store.commit(UserMutationType.SET_LOGIN_MODAL, { visible: true, type: 'login' })"
         >登录</AButton>
         <AButton
-            @click="store.commit(MutationType.SET_LOGIN_MODAL, { visible: true, type: 'register' })"
+            @click="store.commit(UserMutationType.SET_LOGIN_MODAL, { visible: true, type: 'register' })"
         >注册</AButton>
     </div>
 </template>
