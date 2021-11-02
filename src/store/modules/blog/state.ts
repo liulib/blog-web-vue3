@@ -2,22 +2,23 @@ import { BLOG_CATEGORY, BLOG_TAG } from '@/store/types';
 import { storage } from '@/utils/Storage';
 
 export interface ICategory {
-    categoryDes?: string;
-    categoryName: string;
-    createdAt: string;
     id: number;
+    categoryName: string;
+    categoryDes?: string;
     isDelete: number;
-    parentId: number;
-    updatedAt: string;
+    parentId?: number;
+    createdAt?: string;
+    updatedAt?: string;
 }
 
 export interface ITag {
-    createdAt: string;
     id: number;
     isDelete: number;
     tagDes?: string;
     tagName: string;
-    updatedAt: string;
+    tagColor: string;
+    updatedAt?: string;
+    createdAt?: string;
 }
 
 export interface BlogState {

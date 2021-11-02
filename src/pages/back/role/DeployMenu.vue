@@ -22,8 +22,7 @@
                     type="primary"
                     :loading="confirmAddLoading"
                     @click="handleAddOk"
-                    >确认</a-button
-                >
+                >确认</a-button>
             </template>
         </a-modal>
     </div>
@@ -117,7 +116,7 @@ export default defineComponent({
                         emit('closeDeployMenuModal');
                     });
             } catch (error) {
-                message.error(error);
+                message.error(error as string);
                 // 关闭加载动画
                 data.confirmAddLoading = false;
             }
@@ -132,7 +131,7 @@ export default defineComponent({
                 const res = await getMenuAll();
                 data.menuTreeData = toTree<Menu>(res);
             } catch (error) {
-                message.error(error);
+                message.error(error as string);
             }
         };
         onMounted(() => {

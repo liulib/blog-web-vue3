@@ -1,11 +1,11 @@
 export interface ITag {
     id: number;
-    tagName: string;
-    tagDes?: string;
-    tagColor: string;
     isDelete: number;
-    createdAt?: string;
+    tagDes?: string;
+    tagName: string;
+    tagColor: string;
     updatedAt?: string;
+    createdAt?: string;
 }
 
 export interface ICreateTagReq {

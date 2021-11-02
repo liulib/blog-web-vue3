@@ -10,6 +10,6 @@ declare module '*.vue' {
 // .env文件智能提示
 interface ImportMetaEnv {
     VITE_APP_TITLE: string;
-    VITE_APP_PORT: number;
+    VITE_APP_PORT: string;
     VITE_APP_BASE_URL: string;
 }

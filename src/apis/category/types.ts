@@ -9,6 +9,7 @@ export interface ICategory {
     categoryName: string;
     categoryDes?: string;
     isDelete: number;
+    parentId?: number;
     createdAt?: string;
     updatedAt?: string;
 }
