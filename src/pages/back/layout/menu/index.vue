@@ -17,7 +17,7 @@
 
             <template v-else>
                 <!-- 有子级则递归生成子级 -->
-                <menuItem :key="item.url" :menuInfo="item"></menuItem>
+                <menuItem :menuInfo="item"></menuItem>
             </template>
         </template>
     </AMenu>
@@ -56,9 +56,14 @@ export default defineComponent({
             () => route.path,
             () => {
                 // TODO  openKeys有bug
+                console.log(route.path);
+
                 const splitPath = route.path.split('/')
                 const tmpOpenKeys = [`/${splitPath[1]}/${splitPath[2]}`];
                 const tmpSelectKeys = [route.path];
+
+                console.log(tmpOpenKeys);
+
                 store.commit(MutationType.SET_OPEN_KEYS, tmpOpenKeys);
                 store.commit(MutationType.SET_SELECTED_KEYS, tmpSelectKeys);
             },
@@ -73,8 +78,6 @@ export default defineComponent({
          * @keyPath 地址
          */
         const handleRouteJump = ({ key }) => {
-            console.log(key);
-
             router.push(key);
         };
 

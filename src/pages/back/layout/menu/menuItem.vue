@@ -1,5 +1,5 @@
 <template>
-    <ASubMenu>
+    <ASubMenu :key="menuInfo.url">
         <template #title>
             <span>{{ menuInfo.menuName }}</span>
         </template>
