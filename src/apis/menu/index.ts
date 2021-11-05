@@ -3,7 +3,7 @@ import { menu, createMenuReq, updateById } from './types';
 
 enum Api {
     getMenuAll = '/menu/getMenuAll',
-    createMenu = '/menu',
+    createMenu = '/menu/create',
     updateById = '/menu/updateById'
 }
 

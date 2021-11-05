@@ -9,7 +9,7 @@ import {
 
 enum Api {
     getRoleAll = '/role/getRoleAll',
-    createRole = '/role',
+    createRole = '/role/create',
     updateById = '/role/updateById',
     deployMenu = '/role/deployMenu',
     getRoleList = '/role/getRoleList'

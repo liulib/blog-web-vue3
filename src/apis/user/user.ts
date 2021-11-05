@@ -12,7 +12,7 @@ import {
 enum Api {
     login = '/auth/login',
     logout = '/auth/logout',
-    createUser = '/user',
+    createUser = '/user/create',
     updateUser = '/user/updateUser',
     changePwd = '/user/changePwd',
     getUserList = '/user/getUserList',
