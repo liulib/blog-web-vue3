@@ -52,7 +52,7 @@ const { contactInfo, loading } = { ...toRefs(state) }
             <!-- 左侧边栏 -->
             <div class="leftSide">
                 <div class="logo">
-                    <img src="../../assets/images/logo.png" />
+                    <img src="../../assets/logo.png" />
                     <h1 class="title">liulib的简历</h1>
                 </div>
 
