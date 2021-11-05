@@ -49,14 +49,16 @@ const { article, titles } = { ...toRefs(state) }
             <v-md-preview :text="article?.content" ref="preview"></v-md-preview>
         </div>
 
-        <div class="navContainer" v-if="titles.length > 0">
-            <div
-                class="nav"
-                v-for="anchor in titles"
-                :title="anchor.title"
-                :style="{ padding: `10px 0 10px ${anchor.indent * 20}px` }"
-                @click="handleAnchorClick(anchor)"
-            >{{ anchor.title }}</div>
+        <div class="navContainerWrapper" v-if="titles.length > 0">
+            <div class="navContainer">
+                <div
+                    class="nav"
+                    v-for="anchor in titles"
+                    :title="anchor.title"
+                    :style="{ padding: `10px 0 10px ${anchor.indent * 20}px` }"
+                    @click="handleAnchorClick(anchor)"
+                >{{ anchor.title }}</div>
+            </div>
         </div>
     </div>
 </template>
@@ -66,22 +68,17 @@ const { article, titles } = { ...toRefs(state) }
     .mdContainer {
         padding-right: 20px !important;
     }
-    .navContainer {
+    .navContainerWrapper {
         display: none;
     }
 }
 .articleContainer {
-    .navContainer {
-        padding: 0 20px;
-        width: 260px;
+    .navContainerWrapper {
         position: fixed;
-        right: 40px;
+        width: 260px;
+        right: 20px;
         top: 104px;
         bottom: 36px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-
         &::after {
             content: "";
             position: absolute;
@@ -91,14 +88,21 @@ const { article, titles } = { ...toRefs(state) }
             width: 1px;
             background: #e8e8e8;
         }
-
-        .nav {
-            font-size: 14px;
-            color: #8590a6;
-            padding: 5px;
-            cursor: pointer;
-            &:hover {
-                color: #40a9ff;
+        .navContainer {
+            padding: 0 20px;
+            height: 100%;
+            white-space: nowrap;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+            overflow-y: scroll;
+            .nav {
+                font-size: 14px;
+                color: #8590a6;
+                padding: 5px;
+                cursor: pointer;
+                &:hover {
+                    color: #40a9ff;
+                }
             }
         }
     }
