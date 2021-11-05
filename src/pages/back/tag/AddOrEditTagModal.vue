@@ -78,8 +78,6 @@ const handleConfirm = () => {
                 }
 
                 if (state.formState.id !== 0) {
-                    console.log(state.formState);
-
                     await updateTagById(state.formState);
                     Message.success('更新成功');
                 }

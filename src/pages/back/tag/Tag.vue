@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { reactive, toRefs } from 'vue';
+import { message as Message } from 'ant-design-vue';
 
+import { useStore } from "@/store"
 import { TimeFormat } from '@/utils/TimeFormat';
 import tagColumns from './tagColumns'
 import { ITag } from '@/apis/Tag/types'
-import { getAllTag } from '@/apis/tag'
 import AddOrEditTagModal from './AddOrEditTagModal.vue'
+import { BlogActionTypes } from '@/store/modules/blog/action-types'
 
 interface IState {
     TagList: ITag[],
@@ -35,8 +37,17 @@ const state: IState = reactive({
     }
 })
 
+const store = useStore()
+
 const getTagListReq = async () => {
-    state.TagList = await getAllTag()
+    store.dispatch(BlogActionTypes.getTag, undefined)
+        .then((res) => {
+            state.TagList = res
+        })
+        .catch(error => {
+            Message.error(error)
+        })
+    // state.TagList = await getAllTag()
 }
 
 /**

@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { reactive, toRefs } from 'vue';
+import { message as Message } from 'ant-design-vue';
 
+import { useStore } from "@/store"
 import { TimeFormat } from '@/utils/TimeFormat';
 import categoryColumns from './categoryColumns'
 import { ICategory } from '@/apis/category/types'
-import { getAllCategory } from '@/apis/category'
 import AddOrEditCategoryModal from './AddOrEditCategoryModal.vue'
+import { BlogActionTypes } from '@/store/modules/blog/action-types'
 
 interface IState {
     categoryList: ICategory[],
@@ -34,8 +36,17 @@ const state: IState = reactive({
     }
 })
 
+const store = useStore()
+
 const getCategoryListReq = async () => {
-    state.categoryList = await getAllCategory()
+    store.dispatch(BlogActionTypes.getCategory, undefined)
+        .then((res) => {
+            state.categoryList = res
+        })
+        .catch(error => {
+            Message.error(error)
+        })
+    // state.categoryList = await getAllCategory()
 }
 
 /**

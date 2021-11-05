@@ -57,6 +57,7 @@ const state: IState = reactive({
 })
 
 // 初始化的时候检测是否存在分类和标签数据，不存在则获取
+// 可以放在modal中，网络比较慢就放在这边先加载了
 const categoryList = computed(() => store.state.blog.category);
 const tagList = computed(() => store.state.blog.tag);
 
