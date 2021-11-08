@@ -1,4 +1,4 @@
-import logo from '@/assets/images/logo.png';
+import logo from '@/assets/logo.png';
 
 // 基础路径
 export const BASE_URL = {
