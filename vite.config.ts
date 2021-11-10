@@ -3,11 +3,12 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 
 import { visualizer } from 'rollup-plugin-visualizer';
+import viteCompression from 'vite-plugin-compression';
 
 // https://vitejs.dev/config/
 export default ({ mode }) => {
     return defineConfig({
-        plugins: [vue()],
+        plugins: [vue(), viteCompression()],
         resolve: {
             alias: {
                 '@': path.resolve(__dirname, './src')
