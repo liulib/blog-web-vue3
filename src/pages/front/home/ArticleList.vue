@@ -18,13 +18,8 @@ const handleClick = (article: number) => {
 
 <template>
     <div class="main-box">
-        <article
-            v-for="item in articleList"
-            :key="item.id"
-            class="article-box"
-            @click="handleClick(item.id)"
-        >
-            <h1 class="header">
+        <article v-for="item in articleList" :key="item.id" class="article-box">
+            <h1 class="header" @click="handleClick(item.id)">
                 <ADivider orientation="left">
                     <span class="title">{{ item.title }}</span>
                     <span
@@ -33,7 +28,7 @@ const handleClick = (article: number) => {
                 </ADivider>
             </h1>
 
-            <div class="content">
+            <div class="content" @click="handleClick(item.id)">
                 <v-md-preview :text="item.brief" class="previewBox"></v-md-preview>
             </div>
 
@@ -58,6 +53,9 @@ const handleClick = (article: number) => {
                         v-for="tag in item.tags"
                         :key="tag.id"
                         :color="tag.tagColor"
+                        @click="() => {
+                            router.push({ name: 'front-tag', query: { tagId: tag.id, tagName: tag.tagName } })
+                        }"
                     >{{ tag.tagName }}</ATag>
                 </div>
 
@@ -65,7 +63,12 @@ const handleClick = (article: number) => {
 
                 <div class="footer-item">
                     <i class="iconfont icon-fenlei" />
-                    <ATag color="blue">{{ item.category.categoryName }}</ATag>
+                    <ATag
+                        color="blue"
+                        @click="() => {
+                            router.push({ name: 'front-category', query: { categoryId: item.category.id, categoryName: item.category.categoryName } })
+                        }"
+                    >{{ item.category.categoryName }}</ATag>
                 </div>
             </div>
         </article>

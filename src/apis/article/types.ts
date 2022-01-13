@@ -42,3 +42,8 @@ export interface IArticle {
     category: ICategory;
     tags: ITag[];
 }
+
+export interface ITopArticleRes {
+    id: number;
+    title: string;
+}

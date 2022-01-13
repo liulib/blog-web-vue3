@@ -96,10 +96,7 @@ const handlePageChange = data => {
     getArticleListReq()
 };
 
-/**
- * @description: 根据条件显示新增或者编辑对话框
- * @param {Number} type 0新增 1编辑
- */
+// 根据条件显示新增或者编辑对话框 type 0新增 1编辑
 const showAddOrEditModal = (type: number, editData?: IArticle) => {
     if (type === 1 && editData) {
         // 赋值数据

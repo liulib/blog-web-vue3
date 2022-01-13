@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { nextTick, reactive, ref, toRefs } from 'vue'
-import { useRoute } from 'vue-router'
+import { nextTick, reactive, ref, toRefs, watch } from 'vue'
+import { useRoute, onBeforeRouteLeave } from 'vue-router'
 
 import { findArticleDetailById } from '@/apis/article'
 import { IArticle } from '@/apis/article/types'
@@ -28,16 +28,26 @@ const handleAnchorClick = (anchor) => {
     heading.scrollIntoView({ behavior: "smooth", block: "start" })
 }
 
+// 获取文章详情
 const getArticleDetail = async () => {
     state.article = await findArticleDetailById({ id: route.params.id })
-}
-
-getArticleDetail().then(() => {
     nextTick(() => {
         const dom = preview.value?.$el
         state.titles = generateTitles(dom)
-        console.log(state.titles.length);
     })
+}
+
+// 初始化数据
+getArticleDetail()
+
+// 组件被复用时
+let unWatch = watch(() => route.params, (value) => {
+    getArticleDetail()
+})
+
+// 离开页面的时候销毁掉unWatch 避免无用请求
+onBeforeRouteLeave(() => {
+    unWatch()
 })
 
 const { article, titles } = { ...toRefs(state) }

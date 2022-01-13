@@ -4,14 +4,16 @@ import {
     ICreateArticleReq,
     IArticle,
     IQueryArticleListReq,
-    IQueryArticleListRes
+    IQueryArticleListRes,
+    ITopArticleRes
 } from './types';
 
 enum Api {
     createArticle = '/article/create',
     getArticleList = '/article/getList',
     updateById = '/article/updateById',
-    getDetailById = '/article/getDetailById'
+    getDetailById = '/article/getDetailById',
+    getTopicList = '/article/getTopicList'
 }
 
 /**
@@ -55,5 +57,15 @@ export function updateArticleById(params: any) {
         url: Api.updateById,
         method: 'POST',
         params
+    });
+}
+
+/**
+ * @description: 获取热门文章
+ */
+export function findTopicArticle() {
+    return http.request<ITopArticleRes[]>({
+        url: Api.getTopicList,
+        method: 'GET'
     });
 }
