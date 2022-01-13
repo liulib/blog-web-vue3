@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, computed } from 'vue';
 import { message as Message } from 'ant-design-vue';
 
 import { useStore } from "@/store"
@@ -12,7 +12,7 @@ import { BlogActionTypes } from '@/store/modules/blog/action-types'
 interface IState {
     categoryList: ICategory[],
     tableLoading: boolean,
-    modalVisable: boolean,
+    modalVisible: boolean,
     addOrEditFields: ICategory,
     pagination: any
 }
@@ -20,7 +20,7 @@ interface IState {
 const state: IState = reactive({
     categoryList: [],
     tableLoading: false,
-    modalVisable: false,
+    modalVisible: false,
     addOrEditFields: {
         id: 0,
         categoryName: '',
@@ -66,7 +66,7 @@ const showAddModal = (data?: ICategory) => {
         }
     }
 
-    state.modalVisable = true
+    state.modalVisible = true
 }
 
 const handlePageChange = data => {
@@ -79,13 +79,13 @@ const closeAddOrEditModal = (isLoad: boolean) => {
         getCategoryListReq();
     }
 
-    state.modalVisable = false
+    state.modalVisible = false
 }
 
 
 getCategoryListReq()
 
-const { categoryList, tableLoading, pagination, modalVisable, addOrEditFields } = { ...toRefs(state) }
+const { categoryList, tableLoading, pagination, modalVisible, addOrEditFields } = { ...toRefs(state) }
 </script>
 
 <template>
@@ -118,7 +118,7 @@ const { categoryList, tableLoading, pagination, modalVisable, addOrEditFields } 
             </template>
         </ATable>
         <AddOrEditCategoryModal
-            v-if="modalVisable"
+            v-if="modalVisible"
             :addOrEditFields="addOrEditFields"
             @closeAddOrEditModal="closeAddOrEditModal"
         ></AddOrEditCategoryModal>

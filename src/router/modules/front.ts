@@ -52,6 +52,18 @@ const routes: Array<RouteRecordRaw> = [
             import(
                 /* webpackChunkName: "front-category" */ '@/pages/front/category/Category.vue'
             )
+    },
+    {
+        path: 'tag',
+        name: `${routeName}-tag`,
+        meta: {
+            title: '标签',
+            isTabsPage: false
+        },
+        component: () =>
+            import(
+                /* webpackChunkName: "front-tag" */ '@/pages/front/category/Category.vue'
+            )
     }
 ];
 
