@@ -13,6 +13,8 @@ import { setObjToUrlParams } from '@/utils/urlUtils';
 
 import { RequestOptions, Result } from './types';
 
+import { useStore } from '@/store';
+
 const process = import.meta.env;
 
 // const isDev = process.MODE === 'development';
@@ -129,6 +131,16 @@ const transform: AxiosTransform = {
             formatDate,
             isParseToJson
         } = options;
+
+        // 添加token
+        const store = useStore();
+        const token = store.state.user.token;
+        if (token) {
+            if (!config.headers) {
+                config.headers = {};
+            }
+            config.headers['Authorization'] = `Bearer ${token}`;
+        }
 
         config.url = apiUrl ? apiUrl + config.url : config.url;
 
