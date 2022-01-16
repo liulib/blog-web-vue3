@@ -4,7 +4,7 @@ import { ITag, ICreateTagReq } from './types';
 
 enum Api {
     createTag = '/tag/create',
-    getAllTag = '/tag/findList',
+    getAllTag = '/tag/findAll',
     updateById = '/tag/updateById'
 }
 

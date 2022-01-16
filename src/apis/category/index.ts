@@ -4,7 +4,7 @@ import { ICreateCategoryReq, ICategory } from './types';
 
 enum Api {
     createCategory = '/category/create',
-    getAllArticle = '/category/findList',
+    getAllArticle = '/category/findAll',
     updateById = '/category/updateById'
 }
 
