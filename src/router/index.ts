@@ -28,6 +28,15 @@ const routes: Array<RouteRecordRaw> = [
         component: () =>
             import(/* webpackChunkName: "Resume" */ '@/pages/resume/Resume.vue')
     },
+    ,
+    {
+        path: '/githubLogin',
+        name: `GithubLogin`,
+        component: () =>
+            import(
+                /* webpackChunkName: "front-githubLogin" */ '@/pages/front/githubLogin/GithubLogin.vue'
+            )
+    },
     {
         path: '/admin',
         name: 'BackLayout',

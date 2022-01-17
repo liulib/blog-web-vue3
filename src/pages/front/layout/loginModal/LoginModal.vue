@@ -95,7 +95,9 @@ const onSubmit = () => {
         });
 }
 
-const handleGithubLogin = () => { }
+const handleGithubLogin = () => {
+    window.open('http://github.com/login/oauth/authorize?client_id=8cfd838ae6ab49046df7', "_self")
+}
 </script>
 
 <template>
@@ -133,7 +135,7 @@ const handleGithubLogin = () => { }
                     class="btnWidth100"
                     type="primary"
                     htmlType="button"
-                    @lick="{ handleGithubLogin }"
+                    @click="handleGithubLogin"
                 >github登录</AButton>
             </AFormItem>
         </AForm>

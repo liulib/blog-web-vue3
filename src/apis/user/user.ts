@@ -5,12 +5,13 @@ import {
     getUserListReq,
     getUserListRes,
     changePwdReq,
-    createUserReq,
-    updateUserReq
+    githubLoginReq,
+    githubLoginRes
 } from './types';
 
 enum Api {
     login = '/auth/login',
+    githubLogin = '/auth/githubLogin',
     logout = '/auth/logout',
     createUser = '/user/create',
     updateUser = '/user/updateUser',
@@ -26,6 +27,17 @@ export function login(params: LoginReq) {
     return http.request<LoginRes>({
         url: Api.login,
         method: 'POST',
+        params
+    });
+}
+
+/**
+ * @description: github登录
+ */
+export function githubLogin(params: githubLoginReq) {
+    return http.request<githubLoginRes>({
+        url: Api.githubLogin,
+        method: 'GET',
         params
     });
 }

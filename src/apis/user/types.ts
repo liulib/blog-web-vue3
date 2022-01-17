@@ -6,10 +6,19 @@ export interface LoginReq {
     password: string;
 }
 
+export interface githubLoginReq {
+    code: string;
+}
+
 export interface LoginRes {
     token: string;
     username: string;
     menuList: [];
+}
+
+export interface githubLoginRes {
+    token: string;
+    username: string;
 }
 
 export interface getUserListReq {
