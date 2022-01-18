@@ -15,11 +15,13 @@ interface IState {
 
 const route = useRoute()
 const preview = ref()
+const mdContainerRef = ref()
 const state: IState = reactive({
     article: null,
     titles: []
 })
 
+// 点击侧边栏跳转到指定位置 
 const handleAnchorClick = (anchor) => {
     const { lineIndex } = anchor;
 
@@ -42,7 +44,10 @@ getArticleDetail()
 
 // 组件被复用时
 let unWatch = watch(() => route.params, (value) => {
+    // 获取数据
     getArticleDetail()
+    // 将滚动条还原到顶部
+    mdContainerRef.value.scrollIntoView({ behavior: "smooth", block: "start" })
 })
 
 // 离开页面的时候销毁掉unWatch 避免无用请求
@@ -55,7 +60,11 @@ const { article, titles } = { ...toRefs(state) }
 
 <template>
     <div class="articleContainer">
-        <div class="mdContainer" :style="titles.length > 0 ? 'padding-right: 280px;' : ''">
+        <div
+            class="mdContainer"
+            :style="titles.length > 0 ? 'padding-right: 280px;' : ''"
+            ref="mdContainerRef"
+        >
             <v-md-preview :text="article?.content" ref="preview"></v-md-preview>
         </div>
 
