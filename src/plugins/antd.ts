@@ -28,7 +28,10 @@ import {
     InputNumber,
     Skeleton,
     Timeline,
-    Spin
+    Spin,
+    Comment,
+    Tooltip,
+    Avatar
 } from 'ant-design-vue';
 
 import 'ant-design-vue/dist/antd.css';
@@ -59,7 +62,10 @@ export const setupAntd = (app: App<Element>) => {
         .use(InputNumber)
         .use(Skeleton)
         .use(Timeline)
-        .use(Spin);
+        .use(Spin)
+        .use(Comment)
+        .use(Tooltip)
+        .use(Avatar);
 };
 
 // 导出实例 便于在拦截器中使用实现解耦

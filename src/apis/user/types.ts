@@ -37,6 +37,7 @@ export interface user {
     id: number;
     username: string;
     email?: string;
+    avatar: string;
     mobile?: string;
     ifManager: number;
     status: number;
@@ -44,7 +45,7 @@ export interface user {
     isDelete: number;
     createdAt: string;
     updatedAt: string;
-    roles: any[];
+    roles?: any[];
 }
 
 export interface getUserListRes {

@@ -1,7 +1,9 @@
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
 dayjs.extend(utc);
+dayjs.extend(relativeTime);
 
 interface formatOption {
     format?: string;
@@ -28,6 +30,15 @@ export class TimeFormat {
         if (value) {
             if (isUtc) return dayjs.utc(value).format(format);
             return dayjs(value).format(format);
+        }
+    }
+
+    static fromNow(value: string, options: formatOption) {
+        const { format = 'YYYY-MM-DD HH:mm:ss', isUtc = false } = options;
+
+        if (value) {
+            if (isUtc) return dayjs(dayjs.utc(value).format(format)).fromNow();
+            return dayjs(value).fromNow();
         }
     }
 }

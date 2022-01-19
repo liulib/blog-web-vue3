@@ -5,7 +5,10 @@ import {
     IArticle,
     IQueryArticleListReq,
     IQueryArticleListRes,
-    ITopArticleRes
+    ITopArticleRes,
+    ICommentArticleReq,
+    IGetArticleCommentsReq,
+    IComment
 } from './types';
 
 enum Api {
@@ -13,7 +16,9 @@ enum Api {
     getArticleList = '/article/getList',
     updateById = '/article/updateById',
     getDetailById = '/article/getDetailById',
-    getTopicList = '/article/getTopicList'
+    getTopicList = '/article/getTopicList',
+    commentArticle = '/comment/create',
+    getArticleComments = '/comment/getAll'
 }
 
 /**
@@ -67,5 +72,27 @@ export function findTopicArticle() {
     return http.request<ITopArticleRes[]>({
         url: Api.getTopicList,
         method: 'GET'
+    });
+}
+
+/**
+ * @description: 评论文章
+ */
+export function commentArticle(params: ICommentArticleReq) {
+    return http.request({
+        url: Api.commentArticle,
+        method: 'POST',
+        params
+    });
+}
+
+/**
+ * @description: 获取文章下所有评论
+ */
+export function getArticleComments(params: IGetArticleCommentsReq) {
+    return http.request<IComment[]>({
+        url: Api.getArticleComments,
+        method: 'GET',
+        params
     });
 }

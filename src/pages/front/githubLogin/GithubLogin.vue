@@ -36,8 +36,6 @@ store.commit(MutationType.SET_LOGIN_MODAL, {
 
 // TODO 使用action会出现奇怪的bug不懂 先这样使用了 这里需要处理
 githubLogin({ code: code as string }).then(res => {
-    console.log(res);
-
     store.commit(MutationType.SET_TOKEN, res.token);
     store.commit(MutationType.SET_USER_NAME, res.username);
 

@@ -1,5 +1,6 @@
 import { ICategory } from '@/apis/category/types';
 import { ITag } from '@/apis/tag/types';
+import { user } from '@/apis/user/types';
 
 export interface ICreateArticleReq {
     id?: number;
@@ -46,4 +47,27 @@ export interface IArticle {
 export interface ITopArticleRes {
     id: number;
     title: string;
+}
+
+export interface ICommentArticleReq {
+    articleId: number;
+    replyId: number;
+    content: string;
+}
+
+export interface IGetArticleCommentsReq {
+    articleId: number;
+}
+
+export interface IComment {
+    id: number;
+    content: string;
+    replyId: number;
+    commentUserId: number;
+    replyUserId: number;
+    articleId: number;
+    createdAt: string;
+    replyUser?: user;
+    commentUser: user;
+    children: IComment[];
 }

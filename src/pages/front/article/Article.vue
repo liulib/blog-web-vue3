@@ -1,19 +1,29 @@
 <script setup lang="ts">
-import { nextTick, reactive, ref, toRefs, watch } from 'vue'
+import { nextTick, reactive, ref, toRefs, watch, computed } from 'vue'
 import { useRoute, onBeforeRouteLeave } from 'vue-router'
+import { useStore } from '@/store';
+import { DownOutlined } from '@ant-design/icons-vue';
 
 import { findArticleDetailById } from '@/apis/article'
 import { IArticle } from '@/apis/article/types'
+import { MutationType as UserMutationType } from '@/store/modules/user/mutation-types'
 
 import { generateTitles } from '@/utils/generateTitles'
 
+import CommentVue from './Comment.vue'
+
 interface ITitle { title: string; lineIndex: string; indent: number }
+
 interface IState {
     article: IArticle | null,
     titles: ITitle[]
 }
 
 const route = useRoute()
+const store = useStore()
+
+const username = computed(() => store.state.user.username);
+
 const preview = ref()
 const mdContainerRef = ref()
 const state: IState = reactive({
@@ -37,6 +47,18 @@ const getArticleDetail = async () => {
         const dom = preview.value?.$el
         state.titles = generateTitles(dom)
     })
+}
+
+// 下拉列表点击
+const handleMenuClick = ({ key }) => {
+    switch (key) {
+        case 'login':
+            store.commit(UserMutationType.SET_LOGIN_MODAL, { visible: true, type: 'login' })
+            break
+        case 'register':
+            store.commit(UserMutationType.SET_LOGIN_MODAL, { visible: true, type: 'register' })
+            break
+    }
 }
 
 // 初始化数据
@@ -66,6 +88,31 @@ const { article, titles } = { ...toRefs(state) }
             ref="mdContainerRef"
         >
             <v-md-preview :text="article?.content" ref="preview"></v-md-preview>
+
+            <div class="discussBox">
+                <div>共{{ article?.commentCount }}条评论</div>
+                <div v-if="username">{{ username }}</div>
+                <div v-else>
+                    <ADropdown>
+                        <div class="ant-dropdown-link">
+                            未登录
+                            <DownOutlined />
+                        </div>
+                        <template #overlay>
+                            <AMenu @click="handleMenuClick">
+                                <AMenuItem key="login">登录</AMenuItem>
+                                <AMenuItem key="register">注册</AMenuItem>
+                            </AMenu>
+                        </template>
+                    </ADropdown>
+                </div>
+            </div>
+
+            <ADivider></ADivider>
+
+            <div class="commentBox">
+                <CommentVue :articleId="Number(route.params.id as string)"></CommentVue>
+            </div>
         </div>
 
         <div class="navContainerWrapper" v-if="titles.length > 0">
@@ -92,6 +139,17 @@ const { article, titles } = { ...toRefs(state) }
     }
 }
 .articleContainer {
+    .discussBox {
+        margin-top: 10px;
+        padding: 0px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .commentBox {
+        height: 50px;
+    }
     .navContainerWrapper {
         position: fixed;
         width: 260px;
