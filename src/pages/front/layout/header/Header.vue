@@ -25,5 +25,6 @@ import HeaderRight from './HeaderRight.vue'
     background-color: #fff;
     -webkit-box-shadow: 0 2px 8px #f0f1f2;
     box-shadow: 0 2px 8px #f0f1f2;
+    padding: 0;
 }
 </style>

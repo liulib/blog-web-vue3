@@ -51,10 +51,6 @@ getTopicArticleListReq()
 
 
 
-
-
-
-
 </script>
 
 <template>
@@ -151,7 +147,7 @@ getTopicArticleListReq()
 
     .articleBox {
         .articleLink {
-            padding: 10px;
+            padding: 10px 20px;
             cursor: pointer;
             font-size: 14px;
             text-overflow: ellipsis;

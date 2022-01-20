@@ -6,7 +6,7 @@ import UserInfo from './UserInfo.vue';
 </script>
 
 <template>
-    <ARow justify="end">
+    <ARow justify="end" class="headerRight">
         <ACol>
             <NavListVue></NavListVue>
         </ACol>
@@ -15,3 +15,10 @@ import UserInfo from './UserInfo.vue';
         </ACol>
     </ARow>
 </template>
+
+
+<style lang="less" scoped>
+.headerRight {
+    padding-right: 50px;
+}
+</style>

@@ -45,7 +45,7 @@ export interface user {
     isDelete: number;
     createdAt: string;
     updatedAt: string;
-    roles?: any[];
+    roles: any[];
 }
 
 export interface getUserListRes {
