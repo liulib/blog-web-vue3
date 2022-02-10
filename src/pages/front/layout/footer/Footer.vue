@@ -44,7 +44,9 @@ onUnmounted(() => {
 
 <template>
     <ALayoutFooter class="footer">
-        <p>MIT Licensed | Copyright © 2021-present liulib</p>
+        <p>
+            <a href="https://beian.miit.gov.cn">湘ICP备19019855号-1</a>
+        </p>
         <p class="mT3">{{ tips }}</p>
     </ALayoutFooter>
 </template>
@@ -57,6 +59,10 @@ onUnmounted(() => {
     font-size: 12px;
     padding: 5px;
     border-top: 1px solid #ccc;
+
+    a {
+        color: #000;
+    }
 }
 
 .mT3 {
